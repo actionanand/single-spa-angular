@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
+import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
+  { path: ':status', component: TodoComponent },
   { path: '**', component: EmptyRouteComponent, title: 'Single-Spa Angular' },
 ];
 
