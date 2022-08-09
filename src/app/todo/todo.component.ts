@@ -10,10 +10,10 @@ import { TodoService } from '../services/todo.service';
   providers: [TodoService]
 })
 export class TodoComponent implements OnInit {
-  public todos;
-  public activeTasks;
-  public newTodo;
-  public path;
+  public todos: any;
+  public activeTasks!: string;
+  public newTodo!: string;
+  public path!: string;
 
   constructor(private todoService: TodoService, private route: ActivatedRoute) { }
 
@@ -35,11 +35,11 @@ export class TodoComponent implements OnInit {
   getTodos(query = ''){
     return this.todoService.get(query).then(todos => {
       this.todos = todos;
-      this.activeTasks = this.todos.filter(todo => !todo.isDone).length;
+      this.activeTasks = this.todos.filter((todo: { isDone: any; }) => !todo.isDone).length;
     });
   }
 
-  updateTodo(todo, newValue) {
+  updateTodo(todo: { title: string; editing: boolean; }, newValue: any) {
     todo.title = newValue;
     return this.todoService.put(todo).then(() => {
       todo.editing = false;
@@ -47,7 +47,7 @@ export class TodoComponent implements OnInit {
     });
   }
 
-  destroyTodo(todo) {
+  destroyTodo(todo: any) {
     this.todoService.delete(todo).then(() => {
       return this.getTodos();
     });
@@ -59,7 +59,7 @@ export class TodoComponent implements OnInit {
     });
   }
 
-  toggleTodo(todo) {
+  toggleTodo(todo: any) {
     this.todoService.toggle(todo).then(() => {
       return this.getTodos();
     });
