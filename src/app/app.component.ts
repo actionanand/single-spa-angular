@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { singleSpaPropsSubject, SingleSpaProps } from 'src/single-spa/single-spa-props';
 import { Subscription } from 'rxjs';
 import { debounceTime, take } from 'rxjs/operators';
 
-import { getData, state$ } from '@actionanand/utility';
-
+import { singleSpaPropsSubject, SingleSpaProps } from 'src/single-spa/single-spa-props';
 
 @Component({
   selector: 'app-root',
@@ -24,17 +22,10 @@ export class AppComponent implements OnInit, OnDestroy {
       this.singleSpaProps = props;
       console.log(props);
     });
-
-    getData('/data').then((data: any) => {
-      console.log('angular ', data);
-    });
-    this.utiSub = state$.subscribe((data: any) => {
-      console.log('angular ', data);
-    });
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    this.utiSub.unsubscribe();
+    // this.utiSub.unsubscribe();
   }
 
   // OR if you don't need to access `singleSpaProps` inside the component
