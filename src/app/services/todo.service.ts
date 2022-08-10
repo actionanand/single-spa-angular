@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 
-let TODOS = [
-  { title: 'Install Single-Spa CLI', isDone: true },
-  { title: 'Create Angular app', isDone: true },
-  { title: 'Finish service functionality', isDone: false },
-  { title: 'Setup API', isDone: false },
-];
-
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
+  TODOS = [
+    { title: 'Install Single-Spa CLI', isDone: true },
+    { title: 'Create Angular app', isDone: true },
+    { title: 'Finish service functionality', isDone: false },
+    { title: 'Setup API', isDone: false },
+  ];
+
   constructor() {
     const arTodo = localStorage.getItem('ar-todo');
     if (arTodo) {
-      TODOS = JSON.parse(arTodo);
+      this.TODOS = JSON.parse(arTodo);
     } else {
       this.storeToLocalStorage();
     }
@@ -27,9 +27,9 @@ export class TodoService {
 
       if (query === 'completed' || query === 'active'){
         const isCompleted = query === 'completed';
-        data = TODOS.filter(todo => todo.isDone === isCompleted);
+        data = this.TODOS.filter(todo => todo.isDone === isCompleted);
       } else {
-        data = TODOS;
+        data = this.TODOS;
       }
 
       resolve(data);
@@ -38,7 +38,7 @@ export class TodoService {
 
   add(data: any) {
     return new Promise(resolve => {
-      TODOS.push(data);
+      this.TODOS.push(data);
       this.storeToLocalStorage();
       resolve(data);
     });
@@ -46,8 +46,8 @@ export class TodoService {
 
   put(changed: any) {
     return new Promise(resolve => {
-      const index = TODOS.findIndex(todo => todo === changed);
-      TODOS[index].title = changed.title;
+      const index = this.TODOS.findIndex(todo => todo === changed);
+      this.TODOS[index].title = changed.title;
       this.storeToLocalStorage();
       resolve(changed);
     });
@@ -55,8 +55,8 @@ export class TodoService {
 
   delete(selected: any) {
     return new Promise(resolve => {
-      const index = TODOS.findIndex(todo => todo === selected);
-      TODOS.splice(index, 1);
+      const index = this.TODOS.findIndex(todo => todo === selected);
+      this.TODOS.splice(index, 1);
       this.storeToLocalStorage();
       resolve(true);
     });
@@ -64,9 +64,9 @@ export class TodoService {
 
   deleteCompleted() {
     return new Promise(resolve => {
-      TODOS = TODOS.filter(todo => !todo.isDone);
+      this.TODOS = this.TODOS.filter(todo => !todo.isDone);
       this.storeToLocalStorage();
-      resolve(TODOS);
+      resolve(this.TODOS);
     });
   }
 
@@ -77,7 +77,7 @@ export class TodoService {
   }
 
   private storeToLocalStorage() {
-    localStorage.setItem('ar-todo', JSON.stringify(TODOS));
+    localStorage.setItem('ar-todo', JSON.stringify(this.TODOS));
   }
 
 }
