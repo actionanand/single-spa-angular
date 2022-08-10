@@ -36,7 +36,7 @@
               "libraryName": "single-spa-angular",
               "libraryTarget": "umd"
             },
-            "deployUrl": "http://localhost:20222/"
+            "deployUrl": "https://raw.githubusercontent.com/actionanand/single-spa-angular/gh-pages/assets/"
           },
           "configurations": {
             "production": {
