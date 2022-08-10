@@ -12,7 +12,14 @@ let TODOS = [
 })
 export class TodoService {
 
-  constructor() { }
+  constructor() {
+    const arTodo = localStorage.getItem('ar-todo');
+    if (arTodo) {
+      TODOS = JSON.parse(arTodo);
+    } else {
+      this.storeToLocalStorage();
+    }
+  }
 
   get(query = '') {
     return new Promise(resolve => {
@@ -32,6 +39,7 @@ export class TodoService {
   add(data: any) {
     return new Promise(resolve => {
       TODOS.push(data);
+      this.storeToLocalStorage();
       resolve(data);
     });
   }
@@ -40,6 +48,7 @@ export class TodoService {
     return new Promise(resolve => {
       const index = TODOS.findIndex(todo => todo === changed);
       TODOS[index].title = changed.title;
+      this.storeToLocalStorage();
       resolve(changed);
     });
   }
@@ -48,6 +57,7 @@ export class TodoService {
     return new Promise(resolve => {
       const index = TODOS.findIndex(todo => todo === selected);
       TODOS.splice(index, 1);
+      this.storeToLocalStorage();
       resolve(true);
     });
   }
@@ -55,13 +65,19 @@ export class TodoService {
   deleteCompleted() {
     return new Promise(resolve => {
       TODOS = TODOS.filter(todo => !todo.isDone);
+      this.storeToLocalStorage();
       resolve(TODOS);
     });
   }
 
   toggle(selected: any) {
     selected.isDone = !selected.isDone;
+    this.storeToLocalStorage();
     return Promise.resolve();
+  }
+
+  private storeToLocalStorage() {
+    localStorage.setItem('ar-todo', JSON.stringify(TODOS));
   }
 
 }
