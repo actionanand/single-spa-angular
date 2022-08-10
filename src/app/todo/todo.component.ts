@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { singleSpaPropsSubject, SingleSpaProps } from 'src/single-spa/single-spa-props';
+import { Subscription } from 'rxjs';
+import { debounceTime, take } from 'rxjs/operators';
 
 import { TodoService } from '../services/todo.service';
 
@@ -9,18 +13,27 @@ import { TodoService } from '../services/todo.service';
   styleUrls: ['./todo.component.scss'],
   providers: [TodoService]
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit, OnDestroy {
   public todos: any;
   public activeTasks!: string;
   public newTodo!: string;
   public path!: string;
 
+  routerSub!: Subscription;
+  singleSpaProbSub!: Subscription;
+
+  title = 'Angular Todo';
+
   constructor(private todoService: TodoService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.routerSub = this.route.params.subscribe(params => {
       this.path = params['status'];
       this.getTodos(this.path);
+    });
+
+    this.singleSpaProbSub = singleSpaPropsSubject.pipe(debounceTime(0), take(1)).subscribe((props: any) => {
+      this.title = props.angTitle;
     });
   }
 
@@ -63,5 +76,10 @@ export class TodoComponent implements OnInit {
     this.todoService.toggle(todo).then(() => {
       return this.getTodos();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.routerSub.unsubscribe();
+    this.singleSpaProbSub.unsubscribe();
   }
 }

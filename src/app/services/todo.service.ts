@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 let TODOS = [
-  { title: 'Install Angular CLI', isDone: true },
-  { title: 'Style app', isDone: true },
+  { title: 'Install Single-Spa CLI', isDone: true },
+  { title: 'Create Angular app', isDone: true },
   { title: 'Finish service functionality', isDone: false },
   { title: 'Setup API', isDone: false },
 ];

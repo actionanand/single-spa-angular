@@ -28,8 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/app/shared/styles/index.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "customWebpackConfig": {
@@ -37,7 +36,7 @@
               "libraryName": "single-spa-angular",
               "libraryTarget": "umd"
             },
-            "deployUrl": "http://localhost:2022/"
+            "deployUrl": "http://localhost:20222/"
           },
           "configurations": {
             "production": {
@@ -104,8 +103,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/app/shared/styles/index.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }

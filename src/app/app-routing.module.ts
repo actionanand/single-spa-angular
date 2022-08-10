@@ -6,7 +6,8 @@ import { EmptyRouteComponent } from './empty-route/empty-route.component';
 import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
-  { path: ':status', component: TodoComponent },
+  {path: 'angular', redirectTo: 'angular/all', pathMatch: 'full'},
+  { path: 'angular/:status', component: TodoComponent },
   { path: '**', component: EmptyRouteComponent, title: 'Single-Spa Angular' },
 ];
 
