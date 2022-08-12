@@ -48,6 +48,7 @@ export class TodoComponent implements OnInit, OnDestroy {
       if (newTodoTxt) {
         this.newTodo = newTodoTxt;
         this.addTodo();
+        state$.next('');
       }
     });
   }
