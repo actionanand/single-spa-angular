@@ -7,7 +7,7 @@ import { debounceTime, take } from 'rxjs/operators';
 import { getData, state$ } from '@actionanand/utility';
 
 import { singleSpaPropsSubject } from 'src/single-spa/single-spa-props';
-import { TodoService } from '../services/todo.service';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo',
