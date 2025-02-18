@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+import { ParcelModule } from 'single-spa-angular/parcel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,6 +32,7 @@ const materialModules = [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    ParcelModule,
     ...materialModules
   ],
   providers: [],
