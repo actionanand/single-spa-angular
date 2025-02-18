@@ -9,6 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
+import { ParcelComponent } from './parcel/parcel.component';
+import { AngularParcelComponent } from './parcel/angular-parcel/angular-parcel.component';
+import { ReactParcelComponent } from './parcel/react-parcel/react-parcel.component';
 
 const materialModules = [
   BrowserAnimationsModule,
@@ -19,7 +22,10 @@ const materialModules = [
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent
+    TodoComponent,
+    ParcelComponent,
+    AngularParcelComponent,
+    ReactParcelComponent
   ],
   imports: [
     BrowserModule,
