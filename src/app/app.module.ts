@@ -9,9 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './components/todo/todo.component';
-import { ParcelComponent } from './parcel/parcel.component';
-import { AngularParcelComponent } from './parcel/angular-parcel/angular-parcel.component';
-import { ReactParcelComponent } from './parcel/react-parcel/react-parcel.component';
+import { ParcelComponent } from './components/parcel/parcel.component';
+import { AngularParcelComponent } from './components/parcel/angular-parcel/angular-parcel.component';
+import { ReactParcelComponent } from './components/parcel/react-parcel/react-parcel.component';
 
 const materialModules = [
   BrowserAnimationsModule,
