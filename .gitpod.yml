@@ -7,8 +7,8 @@
 tasks:
   - name: SSPA-Angular-14
     before: nvm install v16.20.0
-    init: npm install && npm run build:single-spa:single-spa-angular
-    command: npm run serve:single-spa:single-spa-angular
+    init: npm install && npm run build:single-spa
+    command: npm run serve:single-spa
 vscode:
   extensions:
     - angular.ng-template
