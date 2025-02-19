@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { mountRootParcel } from 'single-spa';
 
-import { DropdownDialog } from '../dropdown-dialog/dropdown-dialog.component';
+import { ModalMicroApp } from '../modal-micro-app/modal-microapp.component';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -34,7 +34,7 @@ export class AngularParcelComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DropdownDialog, {
+    this.dialog.open(ModalMicroApp, {
       data: {
         animal: 'panda',
       },
