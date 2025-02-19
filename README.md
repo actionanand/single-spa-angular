@@ -70,3 +70,4 @@ Each repo can be set up with [Travis CI](https://travis-ci.org/) for running job
 - [Implementing Micro Frontends Using Single SPA](https://betterprogramming.pub/implementing-micro-frontends-using-single-spa-1ac2a3f704a2)
 - [Angular Tutorial: Create a CRUD App with Angular CLI and TypeScript - todo app](https://adrianmejia.com/angular-2-tutorial-create-a-crud-app-with-angular-cli-and-typescript/)
 - [todomvc-app-css git repo - css lib](https://github.com/tastejs/todomvc-app-css)
+- [Rxjs toPromise() deprecated](https://stackoverflow.com/questions/67044273/rxjs-topromise-deprecated)

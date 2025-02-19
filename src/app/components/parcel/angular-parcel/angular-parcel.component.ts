@@ -6,7 +6,7 @@ import { mountRootParcel } from 'single-spa';
 import { ModalAngularApp } from './modal-angular/modal-angular.component';
 
 export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
+  applicationName: 'panda' | 'unicorn' | 'lion';
 }
 
 @Component({
@@ -36,8 +36,10 @@ export class AngularParcelComponent implements OnInit {
   openDialog() {
     this.dialog.open(ModalAngularApp, {
       data: {
-        animal: 'panda',
+        applicationName: 'parcel-angular',
       },
+      width: '500px',
+      autoFocus: false,
     });
   }
 
