@@ -7,7 +7,7 @@ import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-modal-react-container',
-  templateUrl: 'modal-react.component.html'
+  templateUrl: './modal-react.component.html'
 })
 export class ModalReactApp {
   mountRootParcel = mountRootParcel;
