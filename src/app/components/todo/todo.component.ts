@@ -95,8 +95,16 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.routerSub.unsubscribe();
-    this.singleSpaProbSub.unsubscribe();
-    this.utiSub.unsubscribe();
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
+    
+    if (this.singleSpaProbSub) {
+      this.singleSpaProbSub.unsubscribe();
+    }
+
+    if (this.utiSub) {
+      this.utiSub.unsubscribe();
+    }
   }
 }

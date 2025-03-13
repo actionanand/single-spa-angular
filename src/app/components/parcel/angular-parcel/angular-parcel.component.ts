@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
-import { mountRootParcel } from 'single-spa';
 
 import { ModalAngularApp } from './modal-angular/modal-angular.component';
+import { Todo, TodoService } from '../../../services/todo.service';
 
-export interface DialogData {
-  applicationName: 'panda' | 'unicorn' | 'lion';
-}
 
 @Component({
   selector: 'app-angular-parcel',
@@ -16,31 +13,24 @@ export interface DialogData {
 })
 export class AngularParcelComponent implements OnInit {
 
-  mountRootParcel = mountRootParcel;
-  parcelProps = { customProp1: 'Parent prop1' };
-  target = document.body;
+  private todoServ = inject(TodoService);
+  private latestTodo!: Todo;
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-  }
-
-  async configNgParcel() {
-    return (window as any).System.import('angular-parcel-app');
-  }
-
-  parcelMountedMyNg():void {
-    console.log('Angular parcel mounted');
+    this.latestTodo = this.todoServ.getTheLatestTodo();
   }
 
   openDialog() {
     this.dialog.open(ModalAngularApp, {
       data: {
-        applicationName: 'parcel-angular',
+        applicationName: 'angular-parcel-app',
+        title: 'Angular Parcel App',
+        todo: this.latestTodo,
       },
       width: '500px',
       autoFocus: false,
     });
   }
-
 }

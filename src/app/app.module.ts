@@ -13,6 +13,7 @@ import { TodoComponent } from './components/todo/todo.component';
 import { ParcelComponent } from './components/parcel/parcel.component';
 import { AngularParcelComponent } from './components/parcel/angular-parcel/angular-parcel.component';
 import { ReactParcelComponent } from './components/parcel/react-parcel/react-parcel.component';
+import { ModalReactApp } from './components/parcel/react-parcel/modal-react/modal-react.component';
 
 const materialModules = [
   BrowserAnimationsModule,
@@ -26,7 +27,8 @@ const materialModules = [
     TodoComponent,
     ParcelComponent,
     AngularParcelComponent,
-    ReactParcelComponent
+    ReactParcelComponent,
+    ModalReactApp
   ],
   imports: [
     BrowserModule,

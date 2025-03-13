@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 
+export interface Todo {
+  title: string;
+  isDone: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  TODOS = [
+  TODOS: Todo[] = [
     { title: 'Install Single-Spa CLI', isDone: true },
     { title: 'Create Angular app', isDone: true },
     { title: 'Finish service functionality', isDone: false },
@@ -74,6 +79,14 @@ export class TodoService {
     selected.isDone = !selected.isDone;
     this.storeToLocalStorage();
     return Promise.resolve();
+  }
+
+  getTheLatestTodo() {
+    if (this.TODOS.length > 0) {
+      return this.TODOS.slice(-1)[0];
+    } else {
+      return { title: 'There\'s no new \'Todo\'', isDone: false };
+    }
   }
 
   private storeToLocalStorage() {

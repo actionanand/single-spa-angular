@@ -7,16 +7,8 @@ import { tap, map } from 'rxjs/operators';
 // import { mapTo } from 'rxjs/operators'; // mapTo is deprecated, use map() instead
 
 import { singleSpaPropsSubject } from '../../../../../single-spa/single-spa-props';
-import { DialogData } from '../angular-parcel.component';
 import { environment } from '../../../../../environments/environment';
 
-/*
-declare global {
-  interface Window {
-    System: any;
-  }
-}
-*/
 
 declare global {
   interface Window {
@@ -26,16 +18,6 @@ declare global {
   }
 }
 
-/*
-let mountParcel;
-export const bootstrap = [
-  (props: { mountParcel: any; }) => {
-    mountParcel = props.mountParcel;
-    return Promise.resolve();
-  }
-  // more bootstrap lifecycles if necessary
-];
-*/
 
 @Component({
   selector: 'app-modal-angular-container',
@@ -50,11 +32,10 @@ export class ModalAngularApp implements OnInit, AfterViewInit, OnDestroy{
   private customProperty: object;
 
   constructor(public dialogRef: MatDialogRef<ModalAngularApp>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: any) {
       this.customProperty = dialogRef;
       this.applicationName = data.applicationName;
     }
-
 
     private appParcelMap: {
       [appName: string]: Parcel
