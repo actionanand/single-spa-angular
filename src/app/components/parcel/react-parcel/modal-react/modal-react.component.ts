@@ -11,19 +11,14 @@ import { environment } from '../../../../../environments/environment';
 })
 export class ModalReactApp {
   mountRootParcel = mountRootParcel;
-  parcelProps = { customProp1: 'Parent prop1' };
   target = document.body;
 
-  cool = true;
-
-  private applicationName: string ;
-
-  private customProperty: object;
+  applicationName: string ;
+  customProperty: any;
 
   constructor(public dialogRef: MatDialogRef<ModalReactApp>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.customProperty = dialogRef;
     this.applicationName = data.applicationName;
-    console.log('data', data);
   }
 
   async configNgParcel() {

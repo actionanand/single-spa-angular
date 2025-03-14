@@ -3,7 +3,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ModalAngularApp } from './modal-angular/modal-angular.component';
-import { Todo, TodoService } from '../../../services/todo.service';
+import { TodoService } from '../../../services/todo.service';
+import { Todo } from '../../../models/todo.model';
 
 
 @Component({

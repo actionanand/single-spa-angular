@@ -6,8 +6,9 @@ import { debounceTime, take } from 'rxjs/operators';
 
 import { getData, state$ } from '@actionanand/utility';
 
-import { singleSpaPropsSubject } from 'src/single-spa/single-spa-props';
+import { singleSpaPropsSubject } from '../../../single-spa/single-spa-props';
 import { TodoService } from '../../services/todo.service';
+import { Todo } from '../../models/todo.model';
 
 @Component({
   selector: 'app-todo',
@@ -23,6 +24,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   routerSub!: Subscription;
   singleSpaProbSub!: Subscription;
   utiSub!: Subscription;
+  todoUpdateSub!: Subscription;
 
   title = 'Angular Todo';
 
@@ -38,6 +40,16 @@ export class TodoComponent implements OnInit, OnDestroy {
       this.title = props.angTitle;
     });
 
+    this.todoUpdateSub = this.todoService.editLatestTodo$.subscribe((todo) => {
+      if (!todo) {
+        return;
+      }
+      
+      this.todoService.updateFromParcel(todo).then(() => {
+        return this.getTodos();
+      });
+    });
+
     getData('/data').then((data: any) => {
       console.log('angular ', data);
     });
@@ -48,7 +60,8 @@ export class TodoComponent implements OnInit, OnDestroy {
       if (newTodoTxt) {
         this.newTodo = newTodoTxt;
         this.addTodo();
-        state$.next('');
+        this.newTodo = '';
+        // state$.next('');
       }
     });
   }
@@ -68,15 +81,14 @@ export class TodoComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateTodo(todo: { title: string; editing: boolean; }, newValue: any) {
-    todo.title = newValue;
-    return this.todoService.put(todo).then(() => {
+  updateTodo(todo: Todo, newTitle: string) {
+    return this.todoService.put(todo, newTitle).then(() => {
       todo.editing = false;
       return this.getTodos();
     });
   }
 
-  destroyTodo(todo: any) {
+  destroyTodo(todo: Todo) {
     this.todoService.delete(todo).then(() => {
       return this.getTodos();
     });
@@ -88,7 +100,7 @@ export class TodoComponent implements OnInit, OnDestroy {
     });
   }
 
-  toggleTodo(todo: any) {
+  toggleTodo(todo: Todo) {
     this.todoService.toggle(todo).then(() => {
       return this.getTodos();
     });
@@ -105,6 +117,10 @@ export class TodoComponent implements OnInit, OnDestroy {
 
     if (this.utiSub) {
       this.utiSub.unsubscribe();
+    }
+
+    if (this.todoUpdateSub) {
+      this.todoUpdateSub.unsubscribe();
     }
   }
 }
