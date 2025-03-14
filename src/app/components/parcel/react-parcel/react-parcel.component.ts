@@ -33,6 +33,8 @@ export class ReactParcelComponent implements OnInit {
       },
       width: '500px',
       autoFocus: false,
+      disableClose: true,
+      panelClass:'icon-outside' // if you remove this line, the icons will be inside the dialog
     });
 
     this.modalRef.afterClosed().subscribe((result: TodoParcelData) => {

@@ -7,5 +7,9 @@
   [appendTo]="target"
 ></parcel> -->
 
+<button mat-icon-button class="close-button" [mat-dialog-close]="{event: 'cancel', message: 'Cancelled from react parcel \'x\' icon', data: null}">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+
 <parcel [config]="configNgParcel" [mountParcel]="mountRootParcel" [customProps]="customProperty"
   [onParcelMount]="parcelMountedMyNg"></parcel>

@@ -6,6 +6,7 @@ import { ParcelModule } from 'single-spa-angular/parcel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,11 +15,13 @@ import { ParcelComponent } from './components/parcel/parcel.component';
 import { AngularParcelComponent } from './components/parcel/angular-parcel/angular-parcel.component';
 import { ReactParcelComponent } from './components/parcel/react-parcel/react-parcel.component';
 import { ModalReactApp } from './components/parcel/react-parcel/modal-react/modal-react.component';
+import { PopoverModule } from './components/popover/popover.module';
 
 const materialModules = [
   BrowserAnimationsModule,
   MatButtonModule,
-  MatDialogModule
+  MatDialogModule,
+  MatIconModule
 ];
 
 @NgModule({
@@ -35,6 +38,7 @@ const materialModules = [
     FormsModule,
     AppRoutingModule,
     ParcelModule,
+    PopoverModule,
     ...materialModules
   ],
   providers: [],

@@ -21,7 +21,7 @@ declare global {
 
 @Component({
   selector: 'app-modal-angular-container',
-  template: '<div #modalMicroAppPopupContainer></div>',
+  template: `<div #modalMicroAppPopupContainer></div>`,
 })
 export class ModalAngularApp implements OnInit, AfterViewInit, OnDestroy{
   @ViewChild('modalMicroAppPopupContainer', { static: true })

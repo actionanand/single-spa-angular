@@ -71,3 +71,5 @@ Each repo can be set up with [Travis CI](https://travis-ci.org/) for running job
 - [Angular Tutorial: Create a CRUD App with Angular CLI and TypeScript - todo app](https://adrianmejia.com/angular-2-tutorial-create-a-crud-app-with-angular-cli-and-typescript/)
 - [todomvc-app-css git repo - css lib](https://github.com/tastejs/todomvc-app-css)
 - [Rxjs toPromise() deprecated](https://stackoverflow.com/questions/67044273/rxjs-topromise-deprecated)
+- [Creating a custom Popover with Overlay in Angular](https://medium.com/@JoaoPoggioli/creating-a-custom-popover-with-overlay-in-angular-dfb330cfd124)
+- [custom Popover - Stackblitz ](https://stackblitz.com/edit/pop-over-poc-final)
