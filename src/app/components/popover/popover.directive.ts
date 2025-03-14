@@ -63,7 +63,7 @@ export class PopoverDirective implements OnDestroy, OnInit {
   private createOverlay(): void {
     const scrollStrategy = this.overlay.scrollStrategies.block();
     const positionStrategy = this.overlay.position().flexibleConnectedTo(this.elementRef).withPositions([
-      { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' }
+      { originX: 'center', originY: 'bottom', overlayX: 'center', overlayY: 'top' }
     ]);
 
     this.overlayRef = this.overlay.create({
